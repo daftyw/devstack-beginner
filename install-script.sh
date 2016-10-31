@@ -17,7 +17,7 @@ fi
 cd $DEVSTACK_DIR
 
 if [[ "$PWD" =~ $DEVSTACK_DIR ]]; then
-  echo '[[local|localrc]]\nADMIN_PASSWORD=admin\nDATABASE_PASSWORD=$ADMIN_PASSWORD\nRABBIT_PASSWORD=$ADMIN_PASSWORD\nSERVICE_PASSWORD=$ADMIN_PASSWORD' > local.conf
+  printf '[[local|localrc]]\nADMIN_PASSWORD=admin\nDATABASE_PASSWORD=$ADMIN_PASSWORD\nRABBIT_PASSWORD=$ADMIN_PASSWORD\nSERVICE_PASSWORD=$ADMIN_PASSWORD\n\n' > local.conf
   chown ubuntu:ubuntu local.conf
   echo 'created: local.conf'
 fi
