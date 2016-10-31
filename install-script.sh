@@ -17,6 +17,8 @@ fi
 cd $DEVSTACK_DIR
 
 if [[ "$PWD" =~ $DEVSTACK_DIR ]]; then
+  git fetch origin
+  git checkout stable/newton
   printf '[[local|localrc]]\nADMIN_PASSWORD=admin\nDATABASE_PASSWORD=$ADMIN_PASSWORD\nRABBIT_PASSWORD=$ADMIN_PASSWORD\nSERVICE_PASSWORD=$ADMIN_PASSWORD\n\n' > local.conf
   chown ubuntu:ubuntu local.conf
   echo 'created: local.conf'
