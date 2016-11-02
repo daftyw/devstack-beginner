@@ -4,6 +4,7 @@
 
 - Download and install [Vagrant](https://www.vagrantup.com)
 - Clone the folder
+- Check your private IP configuration in hosts file
 - At the folder you just cloned, run start vagrant
 
 			vagrant up
@@ -14,7 +15,7 @@
 
 - Initialize Devstack
 
-			cd devstack; ./stack.sh
+			./devstack/stack.sh
 
 - Get password  
 
