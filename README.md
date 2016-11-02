@@ -13,15 +13,17 @@
 
 			vagrant ssh
 
-- Initialize Devstack
+- Initialize Devstack, wait util it done (usually took more than 30 mins)
 
 			./devstack/stack.sh
 
 - Get password  
 
-			source openrc [OS_USERNAME] [OS_PROJECT_NAME]
-			echo $OS_USERNAME
-			echo $OS_PASSWORD
+			$ source openrc [OS_USERNAME] [OS_PROJECT_NAME]
+
+			$ echo $OS_USERNAME $OS_PASSWORD
+
+- Checkout in your web browser http://localhost:8080/dashboard
 
 ### Troubleshoot
 
@@ -29,3 +31,16 @@
 
 - Try to find that your private IP (VirtualBox's host-only network)
 - Put it into **'hosts'** file
+- Run
+			vagrant provision
+
+
+#### 2. Cannot start service (such as "nova-api", "glance-api", etc.)
+
+- Set __admin__ user
+
+			OS_USERNAME=admin
+
+- Export to another bash enviroment
+
+			export OS_USERNAME
