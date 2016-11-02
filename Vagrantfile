@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.200.10"
+  config.vm.network "private_network", ip: "192.168.33.12"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -76,8 +76,6 @@ Vagrant.configure("2") do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision :ansible do |ansible|
     ansible.limit = "all"
-    ansible.sudo = true
-    ansible.sudo_user = "ubuntu"
     ansible.playbook = "devstack.yml"
     ansible.inventory_path = "hosts"
     ansible.verbose = true
