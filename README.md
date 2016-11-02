@@ -4,20 +4,45 @@
 
 - Download and install [Vagrant](https://www.vagrantup.com)
 - Clone the folder
+- Check your private IP configuration in hosts file
 - At the folder you just cloned, run start vagrant
-
-			vagrant up
-
+```
+vagrant up
+```
 - SSH to the vagrant box
+```
+vagrant ssh
+```
+- Initialize Devstack, wait util it done (usually took more than 30 mins)
+```
+./devstack/stack.sh
+```
+- Get password, run following command
+```
+source openrc [OS_USERNAME] [OS_PROJECT_NAME]
+echo $OS_USERNAME $OS_PASSWORD
+```
 
-			vagrant ssh
+- Checkout in your web browser **http://localhost:8080/dashboard**
+- More information go to : [Openstack-docs](http://docs.openstack.org/)
 
-- Initialize Devstack
+### Troubleshoot
 
-			cd devstack; ./stack.sh
+#### 1. Cannot connect to vagrant
 
-- Get password  
+- Try to find that your private IP (VirtualBox's host-only network)
+- Put it into **'hosts'** file
+- Run
+```
+vagrant provision
+```
+#### 2. Cannot start service (such as "nova-api", "glance-api", etc.)
 
-			source openrc [OS_USERNAME] [OS_PROJECT_NAME]
-			echo $OS_USERNAME
-			echo $OS_PASSWORD
+- Set __admin__ user
+```
+OS_USERNAME=admin
+```
+- Export to another bash enviroment
+```
+export OS_USERNAME
+```
