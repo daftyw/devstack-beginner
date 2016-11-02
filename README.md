@@ -24,7 +24,6 @@ echo $OS_USERNAME $OS_PASSWORD
 ```
 
 - Checkout in your web browser **http://localhost:8080/dashboard**
-- More information go to : [Openstack-docs](http://docs.openstack.org/)
 
 ### Troubleshoot
 
