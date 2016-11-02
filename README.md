@@ -22,3 +22,10 @@
 			source openrc [OS_USERNAME] [OS_PROJECT_NAME]
 			echo $OS_USERNAME
 			echo $OS_PASSWORD
+
+### Troubleshoot
+
+#### 1. Cannot connect to vagrant
+
+- Try to find that your private IP (VirtualBox's host-only network)
+- Put it into **'hosts'** file
