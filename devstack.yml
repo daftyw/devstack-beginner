@@ -1,0 +1,28 @@
+---
+- hosts: devstack1
+  gather_facts: False
+  vars:
+    devstack_repo: https://git.openstack.org/openstack-dev/devstack
+    branch: stable/newton
+    offline: no
+    reclone: no
+    git_base: git://github.com
+    image_url: http://download.cirros-cloud.net/0.3.1/cirros-0.3.1-x86_64-uec.tar.gz
+    devstack_branch: "{{branch}}"
+    devstack_home: /home/ubuntu/devstack
+
+  tasks:
+    - name: git
+      apt: pkg=git state=present
+
+    - name: checkout stack
+      sudo: no
+      git: repo={{devstack_repo}} dest={{devstack_home}} version={{devstack_branch}} accept_hostkey=yes
+
+    - name: copy local.conf.basic
+      sudo: no
+      template: src=local.conf.basic dest={{devstack_home}}/local.conf
+
+    - name: stack.sh
+      sudo: no
+      shell: "{{devstack_home}}/stack.sh" 
